@@ -1,4 +1,4 @@
-CREATE TABLE atomic.com_snowplowanalytics_snowplow_ad_impression_1 (
+CREATE TABLE atomic.com_snowplowanalytics_snowplow_referer_parser_1 (
 	-- Schema of this type
 	schema_vendor		varchar(128)		not null		encoding rle,
 	schema_name 		varchar(128)		not null		encoding rle,
@@ -11,14 +11,10 @@ CREATE TABLE atomic.com_snowplowanalytics_snowplow_ad_impression_1 (
 	ref_tree    		varchar(1500)		not null		encoding rle         ,
 	ref_parent  		varchar(255)		not null		encoding rle         ,
 	-- Properties of this type
-	impressionId		varchar(255)		null        		encoding gzip_comp   ,
-	zoneId      		varchar(255)		null        		encoding gzip_comp   ,
-	bannerId    		varchar(255)		null        		encoding gzip_comp   ,
-	campaignId  		varchar(255)		null        		encoding gzip_comp   ,
-	advertiserId		varchar(255)		null        		encoding gzip_comp   ,
-	targetUrl   		varchar(255)		null        		encoding gzip_comp   ,
-	costModel   		varchar(255)		null        		encoding gzip_comp   ,
-	cost        		number      		null        		encoding auto        
+	vendor      		varchar(255)		not null    		encoding gzip_comp   ,
+	name        		varchar(255)		not null    		encoding gzip_comp   ,
+	enabled     		boolean     		not null    		encoding auto        ,
+	parameters  		varchar(4096)		not null    		encoding gzip_comp   
 )
 ORDER BY
 	schema_vendor,

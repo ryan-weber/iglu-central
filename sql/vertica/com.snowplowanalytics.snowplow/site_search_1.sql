@@ -1,52 +1,31 @@
--- Copyright (c) 2014 Snowplow Analytics Ltd. All rights reserved.
---
--- This program is licensed to you under the Apache License Version 2.0,
--- and you may not use this file except in compliance with the Apache License Version 2.0.
--- You may obtain a copy of the Apache License Version 2.0 at http://www.apache.org/licenses/LICENSE-2.0.
---
--- Unless required by applicable law or agreed to in writing,
--- software distributed under the Apache License Version 2.0 is distributed on an
--- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
--- See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
---
--- Authors:       Alex Dean
--- Copyright:     Copyright (c) 2014 Snowplow Analytics Ltd
--- License:       Apache License Version 2.0
---
--- Compatibility: iglu:com.snowplowanalytics.snowplow/site_search/jsonschema/1-0-0
-
 CREATE TABLE atomic.com_snowplowanalytics_snowplow_site_search_1 (
 	-- Schema of this type
-	"schema.vendor"  			varchar(128)		not null	encoding rle,
-	"schema.name"    			varchar(128)		not null	encoding rle,
-	"schema.format"  			varchar(128)		not null	encoding rle,
-	"schema.version" 			varchar(128)		not null	encoding rle,
+	schema_vendor		varchar(128)		not null		encoding rle,
+	schema_name 		varchar(128)		not null		encoding rle,
+	schema_format		varchar(128)		not null		encoding rle,
+	schema_version		varchar(128)		not null		encoding rle,
 	-- Parentage of this type
-	"hierarchy.rootId"        	char(36)     		not null	encoding gzip_comp,
-	"hierarchy.rootTstamp"    	timestamp    		not null	encoding deltaval,
-	"hierarchy.refRoot"       	varchar(255) 		not null	encoding rle,
-	"hierarchy.refTree"       	varchar(1500)		not null	encoding rle,
-	"hierarchy.refParent"     	varchar(255) 		not null	encoding rle,
+	root_id     		varchar(36) 		not null		encoding gzip_comp   ,
+	root_tstamp 		timestamp   		not null		encoding deltaval    ,
+	ref_root    		varchar(255)		not null		encoding rle         ,
+	ref_tree    		varchar(1500)		not null		encoding rle         ,
+	ref_parent  		varchar(255)		not null		encoding rle         ,
 	-- Properties of this type
-	"data.terms"           		varchar(2048) 		not null	encoding gzip_comp, -- Holds a JSON array. TODO: will replace with a ref_ following https://github.com/snowplow/snowplow/issues/647
-	"data.filters"         		varchar(2048) 					encoding gzip_comp, -- Holds a JSON object. TODO: will replace with a ref_ following https://github.com/snowplow/snowplow/issues/647
-	"data.total_results"   		int 							encoding block_dict,
-	"data.page_results"    		int 							encoding rle,
-	FOREIGN KEY("hierarchy.rootId") REFERENCES atomic.events(event_id)
+	terms       		varchar(4096)		not null    		encoding gzip_comp   ,
+	filters     		varchar(4096)		null        		encoding gzip_comp   ,
+	totalResults		integer     		null        		encoding auto        ,
+	pageResults 		integer     		null        		encoding auto        
 )
 ORDER BY
-	"schema.vendor",
-	"schema.name",
-	"schema.format",
-	"schema.version",
-	"hierarchy.refRoot",
-	"hierarchy.refTree",
-	"hierarchy.refParent",
-	"hierarchy.rootTstamp",
-	"hierarchy.rootId",
-	"data.page_results"
-SEGMENTED BY 
-	hash("hierarchy.rootId") ALL NODES
+	schema_vendor,
+	schema_name,
+	schema_format,
+	schema_version,
+	ref_root,
+	ref_tree,
+	ref_parent,
+	root_tstamp,
+	root_id
+SEGMENTED BY
+	hash(root_id) ALL NODES
 ;
-
-
