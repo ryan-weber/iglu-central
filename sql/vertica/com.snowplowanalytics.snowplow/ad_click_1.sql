@@ -19,7 +19,7 @@ CREATE TABLE atomic.com_snowplowanalytics_snowplow_ad_click_1 (
 	advertiserId		varchar(255)		null        		encoding gzip_comp   ,
 	targetUrl   		varchar(255)		not null    		encoding gzip_comp   ,
 	costModel   		varchar(255)		null        		encoding gzip_comp   ,
-	cost        		number      		null        		encoding auto        
+	cost        		integer     		null        		encoding auto        
 )
 ORDER BY
 	schema_vendor,
