@@ -19,7 +19,7 @@
 -- First rename the existing table (don't delete it)
 ALTER TABLE atomic.com_snowplowanalytics_snowplow_change_form_1 RENAME TO com_snowplowanalytics_snowplow_change_form_1_r1;
 
-CREATE TABLE atomic.com_snowplowanalytics_snowplow_change_form_1 (
+CREATE TABLE IF NOT EXISTS atomic.com_snowplowanalytics_snowplow_change_form_1 (
 	-- Schema of this type
 	schema_vendor   varchar(128)  encode runlength not null,
 	schema_name     varchar(128)  encode runlength not null,

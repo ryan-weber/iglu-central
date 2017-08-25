@@ -1,4 +1,4 @@
-CREATE TABLE atomic.com_snowplowanalytics_snowplow_cookie_extractor_config_1 (
+CREATE TABLE IF NOT EXISTS atomic.com_snowplowanalytics_snowplow_cookie_extractor_config_1 (
 	-- Schema of this type
 	schema_vendor		varchar(128)		not null		encoding rle,
 	schema_name 		varchar(128)		not null		encoding rle,
