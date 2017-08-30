@@ -1,0 +1,27 @@
+{
+    "jsonpaths": [
+        "$.schema.vendor",
+        "$.schema.name",
+        "$.schema.format",
+        "$.schema.version",
+
+        "$.hierarchy.rootId",
+        "$.hierarchy.rootTstamp",
+        "$.hierarchy.refRoot",
+        "$.hierarchy.refTree",
+        "$.hierarchy.refParent",
+        
+        "$.data.name",
+        "$.data.token",
+        "$.data.pushMessageType",
+        "$.data.message",
+        "$.data.network",
+        "$.data.jsonPayload",
+        "$.data.applicationStateType",
+        "$.data.contentId",
+        "$.data.actionIdentifier",
+        "$.data.actionName",
+        "$.data.actionCategoryIdentifier",
+        "$.data.attributes"
+    ]
+}

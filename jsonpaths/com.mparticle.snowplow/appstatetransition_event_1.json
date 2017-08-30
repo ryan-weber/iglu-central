@@ -1,0 +1,24 @@
+{
+    "jsonpaths": [
+        "$.schema.vendor",
+        "$.schema.name",
+        "$.schema.format",
+        "$.schema.version",
+
+        "$.hierarchy.rootId",
+        "$.hierarchy.rootTstamp",
+        "$.hierarchy.refRoot",
+        "$.hierarchy.refTree",
+        "$.hierarchy.refParent",
+        
+        "$.data.transitionType",
+        "$.data.isFirstRun",
+        "$.data.isUpgrade",
+        "$.data.launchParams",
+        "$.data.launchReferral",
+        "$.data.successfullyClosed",
+        "$.data.jsonPayload",        
+        "$.data.referralApplication",
+        "$.data.attributes"
+    ]
+}
